@@ -16,7 +16,8 @@ class HomePage extends StatelessWidget {
           SizedBox(
             height: 30.0,
           ),
-          _boton1(context)
+          _boton1(context),
+          _boton2(context),
         ],
       ),
     );
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
       child: Card(
-        color: Colors.cyan,
+        color: Colors.cyan[50],
         child: ListTile(
           onTap: () => Navigator.pushNamed(context, '/setState'),
           leading: Container(
@@ -38,6 +39,34 @@ class HomePage extends StatelessWidget {
                 color: Colors.deepPurple,
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0),
+          ),
+          // subtitle: Text(''),
+          trailing: Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.deepPurple,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _boton2(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
+      child: Card(
+        color: Colors.cyan[100],
+        child: ListTile(
+          onTap: () => Navigator.pushNamed(context, '/bloc'),
+          leading: Container(
+            child: Icon(Icons.ac_unit),
+          ),
+          title: Text(
+            'BLOC',
+            style: TextStyle(
+              color: Colors.deepPurple,
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
           ),
           // subtitle: Text(''),
           trailing: Icon(
