@@ -9,17 +9,41 @@ class BlocPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('BlocPage'),
       ),
-      body: StreamBuilder(
-        stream: numerosBloc.getNumero,
-        // initialData: initialData ,
-        builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-          return Center(
-              child: Text(snapshot.data.toString(),
-                  style: TextStyle(
-                    fontSize: 50.0,
-                  )));
-        },
+      body: Column(
+        children: [_cantidad(), _cantidad2()],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text('+'),
+      ),
+    );
+  }
+
+  _cantidad() {
+    return StreamBuilder(
+      stream: numerosBloc.getNumero,
+      // initialData: initialData ,
+      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+        return Center(
+            child: Text(snapshot.data.toString() ?? ['0'],
+                style: TextStyle(
+                  fontSize: 50.0,
+                )));
+      },
+    );
+  }
+
+  _cantidad2() {
+    return StreamBuilder(
+      stream: numerosBloc.getContador,
+      // initialData: initialData ,
+      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+        return Center(
+            child: Text(snapshot.data.toString() ?? ['0'],
+                style: TextStyle(
+                  fontSize: 50.0,
+                )));
+      },
     );
   }
 }
