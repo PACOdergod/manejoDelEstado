@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:manejo_estado_app/src/pages/set_state.dart';
+
 class Bloc1 {
   int numero = 0;
   Stream<int> get getNumero async* {
@@ -29,13 +31,13 @@ class Bloc1 {
     _cantidadDisminuir.stream.listen(_restar);
   }
 
-  void _sumar(int cantidad) {
-    cantidad += 1;
+  void _sumar(int numero) {
+    this.cantidad += numero;
     obtenerCantidadSink.add(cantidad);
   }
 
-  void _restar(int cantidad) {
-    cantidad -= 1;
+  void _restar(int numero) {
+    this.cantidad -= numero;
     obtenerCantidadSink.add(cantidad);
   }
 

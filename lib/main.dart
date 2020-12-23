@@ -11,12 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      initialRoute: '/bloc',
+      initialRoute: 'home',
       routes: {
-        '/home': (BuildContext context) => HomePage(),
+        'home': (BuildContext context) => HomePage(),
         '/setState': (BuildContext context) => SetState(),
-        '/bloc': (BuildContext context) => BlocPage(),
-        '/provider': (BuildContext context) => Provider(),
+        '/blocPage1': (BuildContext context) => BlocPage1(),
       },
     );
   }

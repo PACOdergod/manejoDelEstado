@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
       child: Card(
         color: Colors.cyan[100],
         child: ListTile(
-          onTap: () => Navigator.pushNamed(context, '/bloc'),
+          onTap: () => Navigator.pushNamed(context, '/blocPage1'),
           leading: Container(
             child: Icon(Icons.ac_unit),
           ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:manejo_estado_app/src/bloc/bloc_1.dart';
 
-class BlocPage extends StatefulWidget {
+class BlocPage1 extends StatefulWidget {
   @override
   _BlocPageState createState() => _BlocPageState();
 }
 
-class _BlocPageState extends State<BlocPage> {
+class _BlocPageState extends State<BlocPage1> {
   final numerosBloc = new Bloc1();
 
   @override
@@ -16,11 +16,24 @@ class _BlocPageState extends State<BlocPage> {
         title: Text('BlocPage'),
       ),
       body: Column(
-        children: [_cantidad2()],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Text('+'),
+        children: [
+          _cantidad2(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    numerosBloc.aumentarCantidad.add(1);
+                  }),
+              IconButton(
+                  icon: Icon(Icons.remove),
+                  onPressed: () {
+                    numerosBloc.disminuirCantidad.add(1);
+                  })
+            ],
+          )
+        ],
       ),
     );
   }
@@ -41,20 +54,6 @@ class _BlocPageState extends State<BlocPage> {
           );
         },
       ),
-    );
-  }
-
-  _cantidad() {
-    return StreamBuilder(
-      stream: numerosBloc.getNumero,
-      // initialData: initialData ,
-      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-        return Center(
-            child: Text(snapshot.data.toString() ?? ['0'],
-                style: TextStyle(
-                  fontSize: 50.0,
-                )));
-      },
     );
   }
 }
