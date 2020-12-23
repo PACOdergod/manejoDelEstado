@@ -10,4 +10,38 @@ class Bloc1 {
       yield numero;
     }
   }
+
+  int cantidad = 0;
+
+  final _cantidadStream = StreamController<int>();
+  final _cantidadAumentar = StreamController<int>();
+  final _cantidadDisminuir = StreamController<int>();
+
+  Stream<int> get obtenerCantidad => _cantidadStream.stream;
+  StreamSink<int> get obtenerCantidadSink => _cantidadStream.sink;
+
+  StreamSink<int> get aumentarCantidad => _cantidadAumentar.sink;
+  StreamSink<int> get disminuirCantidad => _cantidadDisminuir.sink;
+
+  Bloc1() {
+    _cantidadStream.add(cantidad);
+    _cantidadAumentar.stream.listen(_sumar);
+    _cantidadDisminuir.stream.listen(_restar);
+  }
+
+  void _sumar(int cantidad) {
+    cantidad += 1;
+    obtenerCantidadSink.add(cantidad);
+  }
+
+  void _restar(int cantidad) {
+    cantidad -= 1;
+    obtenerCantidadSink.add(cantidad);
+  }
+
+  void dispose() {
+    _cantidadStream.close();
+    _cantidadAumentar.close();
+    _cantidadDisminuir.close();
+  }
 }
