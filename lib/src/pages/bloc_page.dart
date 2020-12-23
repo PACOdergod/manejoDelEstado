@@ -10,7 +10,7 @@ class BlocPage extends StatelessWidget {
         title: Text('BlocPage'),
       ),
       body: Column(
-        children: [_cantidad(), _cantidad2()],
+        children: [_cantidad()],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -22,20 +22,6 @@ class BlocPage extends StatelessWidget {
   _cantidad() {
     return StreamBuilder(
       stream: numerosBloc.getNumero,
-      // initialData: initialData ,
-      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-        return Center(
-            child: Text(snapshot.data.toString() ?? ['0'],
-                style: TextStyle(
-                  fontSize: 50.0,
-                )));
-      },
-    );
-  }
-
-  _cantidad2() {
-    return StreamBuilder(
-      stream: numerosBloc.getContador,
       // initialData: initialData ,
       builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
         return Center(
